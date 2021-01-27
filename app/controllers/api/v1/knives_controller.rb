@@ -16,7 +16,7 @@ class Api::V1::KnivesController < ApplicationController
     if @knife.save
       render json: @knife
     else
-      render json: {'Error creating knife'}
+      render json: {error: 'Error creating knife'}
     end
   end
 
@@ -25,7 +25,7 @@ class Api::V1::KnivesController < ApplicationController
     if @knife.update 
       render json: @knife 
     else 
-      render json: {'Error updating knife'}
+      render json: {error: 'Error updating knife'}
   end
 
   def destroy 

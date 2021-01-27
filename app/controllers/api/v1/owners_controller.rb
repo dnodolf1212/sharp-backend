@@ -10,7 +10,7 @@ class Api::V1::OwnersController < ApplicationController
     if @owner.save
       render json: @owner
     else
-      render json: {'Error creating owner'}
+      render json: {error: 'Error creating owner'}
     end
   end
 
@@ -24,7 +24,8 @@ class Api::V1::OwnersController < ApplicationController
     if @owner.update 
       render json: @owner 
     else 
-      render json: {'Error updating owner'}
+      render json: {error: 'Error updating owner'}
+    end
   end
 
   def destroy 
