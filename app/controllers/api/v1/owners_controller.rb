@@ -1,12 +1,12 @@
 class Api::V1::OwnersController < ApplicationController
   
   def index 
-    @owner = Owner.all
-    render json: @owner
+    @owners = Owner.all
+    render json: @owners
   end
 
   def create
-    @owner = Owner.new(owner_params)
+    @owner = Owner.new(owner_params) 
     if @owner.save
       render json: @owner
     else
@@ -39,8 +39,8 @@ class Api::V1::OwnersController < ApplicationController
     @owner = Owner.find_by_id(params[:id])
   end
 
-  def knife_params
-    params.require(:owner).permit(:username, :location)
+  def owner_params
+    params.require(:owner).permit(:ownername, :location)
   end
   
 end
