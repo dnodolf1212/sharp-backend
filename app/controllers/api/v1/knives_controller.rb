@@ -40,7 +40,8 @@ class Api::V1::KnivesController < ApplicationController
   end
 
   def knife_params
-    params.require(:knife).permit(:owner_id, :category, :brand, :price, :description, :for_sale, :likes)
+    params.require(:knife).permit(:owner_id, :category, :brand, 
+    :price, :description, :for_sale, :likes. :featured_image)
   end
 
 end
