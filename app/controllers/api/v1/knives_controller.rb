@@ -1,5 +1,7 @@
 class Api::V1::KnivesController < ApplicationController
 
+  before_action :set_owner
+
   def index 
     #@knives = @owner.knives for sales??? If we hava an owner filter link to index just an owners knives??
     @knives = @owner.knives.all  
@@ -14,7 +16,7 @@ class Api::V1::KnivesController < ApplicationController
   def create
     @knife = @owner.knives.new(knife_params)
     if @knife.save
-      render json: @knife
+      render json: @owner
     else
       render json: {error: 'Error creating knife'}
     end
@@ -26,6 +28,7 @@ class Api::V1::KnivesController < ApplicationController
       render json: @knife 
     else 
       render json: {error: 'Error updating knife'}
+    end
   end
 
   def destroy 
@@ -34,14 +37,19 @@ class Api::V1::KnivesController < ApplicationController
   end
 
   private 
-    
-  def set_knife
-    @knife = Knife.find_by_id(params[:owner_id])
+
+  def set_owner
+    @owner = Owner.find_by_id(params[:owner_id])
   end
+    
+  #def set_knife
+  #  @knife = Knife.find_by_id(params[:owner_id])
+  #end
 
   def knife_params
-    params.require(:knife).permit(:owner_id, :category, :brand, 
-    :price, :description, :for_sale, :likes. :featured_image)
+    params.require(:knife).permit(:category, :brand, :price, :description, :for_sale, :likes, :owner_id)
   end
 
 end
+ #:featured_image ADD THIS IN LATER!!! NEED URLS!!!
+ 
