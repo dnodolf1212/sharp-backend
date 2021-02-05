@@ -5,6 +5,4 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-greg = Owner.create(ownername: "Greg", location: "WI, USA")
-
-santoku = Knife.create(owner_id: 1, category: "Santoku", description: "New Kurosaki, blue steel, with Western Handle", for_sale: false)
+chuck = Owner.create(ownername: "Chuck", location: "Madison, WI")

@@ -16,7 +16,9 @@ class Api::V1::KnivesController < ApplicationController
   def create
     @knife = @owner.knives.new(knife_params)
     if @knife.save
-      render json: @owner
+      #@knife.featured_image.purge
+      #@knife.featured_image.attach(params[:knife][:featured_image])
+      render json: @knife, methods: :image_url
     else
       render json: {error: 'Error creating knife'}
     end
@@ -38,18 +40,16 @@ class Api::V1::KnivesController < ApplicationController
 
   private 
 
-  def set_owner
-    @owner = Owner.find_by_id(params[:owner_id])
-  end
-    
-  #def set_knife
-  #  @knife = Knife.find_by_id(params[:owner_id])
-  #end
-
-  def knife_params
-    params.require(:knife).permit(:category, :brand, :price, :description, :for_sale, :likes, :owner_id)
-  end
+    def set_owner
+      @owner = Owner.find_by_id(params[:owner_id])
+    end
+      
+    def knife_params
+      params.permit(:featured_image, :category, :brand, :price, :description, :for_sale, :likes, :owner_id)
+    end
 
 end
- #:featured_image ADD THIS IN LATER!!! NEED URLS!!!
  
+ #def set_knife
+  #  @knife = Knife.find_by_id(params[:owner_id])
+  #end
