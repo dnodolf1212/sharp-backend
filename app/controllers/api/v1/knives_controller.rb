@@ -15,7 +15,7 @@ class Api::V1::KnivesController < ApplicationController
   
   def create
     @knife = @owner.knives.new(knife_params)
-    if @knife.save
+    if @knife.save!
       #@knife.featured_image.purge
       #@knife.featured_image.attach(params[:knife][:featured_image])
       render json: @knife, methods: :image_url
