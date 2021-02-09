@@ -4,12 +4,12 @@ class Api::V1::KnivesController < ApplicationController
 
   def index 
     #@knives = @owner.knives for sales??? If we hava an owner filter link to index just an owners knives??
-    @knives = @owner.knives.all  
+    @knives = @owner.knives
     render json: @knives
   end
 
   def show
-    set_knife
+    @knife = @owner.knives.find_by_id(params[:id])
     render json: @knife
   end 
   
@@ -24,7 +24,7 @@ class Api::V1::KnivesController < ApplicationController
   end
 
   def edit
-    set_knife
+    @knife = @owner.knives.find_by_id(params[:id])
     if @knife.update 
       render json: @knife 
     else 
@@ -33,7 +33,7 @@ class Api::V1::KnivesController < ApplicationController
   end
 
   def destroy 
-    set_knife
+    @knife = @owner.knives.find_by_id(params[:id])
     @knife.destroy
   end
 
@@ -49,6 +49,3 @@ class Api::V1::KnivesController < ApplicationController
 
 end
  
- #def set_knife
-  #  @knife = Knife.find_by_id(params[:owner_id])
-  #end
