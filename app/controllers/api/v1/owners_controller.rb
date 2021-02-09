@@ -12,7 +12,7 @@ class Api::V1::OwnersController < ApplicationController
     else
       render json: {error: 'Error creating owner'}
     end
-  end
+  end 
 
   def show
     set_owner
