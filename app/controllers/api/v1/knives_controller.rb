@@ -14,9 +14,10 @@ class Api::V1::KnivesController < ApplicationController
   end 
   
   def create
+    binding.pry
     @knife = @owner.knives.new(knife_params)
-    if @knife.save!
-      render json: @knife
+    if @knife.save
+      render json: @owner
     else
       render json: {error: 'Error creating knife'}
     end

@@ -1,5 +1,5 @@
 Owner Model - has-many :KNIVES
-- a list of knives as a private collection. They can be uploaded to display and/or sell.
+- a list of knives as a private collection. They can be displayed and/or "sold"
 
 "owner"
   "knife", "knife, "knife"
@@ -11,9 +11,9 @@ attributes --> :ownername(string),
 
 
 Knife Model- belongs-to :OWNER
-- individual knife page
+- can be created and marked as for_sale or sold
 "knife"
-  ":for-sale", "attr", "attr" ":likes"
+:description, :brand, :category, :for_sale(boolean), 
 
 attributes --> :owner_id(integer), :brand(string), :category(string), 
 :price(integer), :description(string), :for_sale (boolean), 
