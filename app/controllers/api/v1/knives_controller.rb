@@ -18,6 +18,8 @@ class Api::V1::KnivesController < ApplicationController
     @knife = @owner.knives.new(knife_params)
     if @knife.save
       render json: @owner
+    else
+      render json: {error: 'Error creating knife'}
     end
   end
 
@@ -25,6 +27,8 @@ class Api::V1::KnivesController < ApplicationController
     @knife = @owner.knives.find_by_id(params[:id])
     if @knife.update 
       render json: @knife 
+    else 
+      render json: {error: 'Error updating knife'}
     end
   end
 
