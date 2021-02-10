@@ -10,7 +10,7 @@ gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 gem 'pry'
-#gem 'active_model_serializers'
+gem 'active_model_serializers'
 #gem "aws-sdk-s3", require: false
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.7'
