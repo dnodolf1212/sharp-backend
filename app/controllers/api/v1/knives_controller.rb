@@ -3,9 +3,12 @@ class Api::V1::KnivesController < ApplicationController
   before_action :set_owner
 
   def index 
-    #@knives = @owner.knives for sales??? If we hava an owner filter link to index just an owners knives??
-    @knives = @owner.knives
+    if @owner
+      @knives = @owner.knives
+    else 
+      @knives = Knife.all
     render json: @knives
+    end
   end
 
   def show
