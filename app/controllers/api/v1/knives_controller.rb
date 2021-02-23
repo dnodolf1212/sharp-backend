@@ -1,6 +1,6 @@
 class Api::V1::KnivesController < ApplicationController
 
-  before_action :set_owner
+  before_action :set_owner, except: [:destroy]
 
   def index 
     if @owner
@@ -34,12 +34,12 @@ class Api::V1::KnivesController < ApplicationController
     end
   end
 
-  def destroy 
-    @knife = @owner.knives.find_by_id(params[:id])
+  def destroy
+    @knife = Knife.find_by_id(params[:owner_id])
+    @owner = Owner.find_by_id(params[:id])
     @knife.destroy
+    render json: @owner
   end
-
-  private 
 
     def set_owner
       @owner = Owner.find_by_id(params[:owner_id])
